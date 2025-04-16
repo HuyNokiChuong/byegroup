@@ -1,0 +1,19 @@
+SELECT
+  id,
+  name,
+  date_order,
+  state,
+  origin,
+  partner_id,
+  receiver_phone,
+  receiver_name,
+  type_customer,
+  order_type,
+  bye_delivery_status,
+  shipping_provider,
+  amount_total,
+  total_discount_amount,
+  discount_in_order,
+  amount_untaxed
+FROM
+  byebeo.sale_order
