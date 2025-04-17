@@ -15,11 +15,11 @@ SELECT
   o.order_type,
   o.bye_delivery_status,
   o.shipping_provider,
-  CAST(o.deposit_amount AS float64) as deposit_amount,--Tiền cọc
-  CAST(o.money_collection AS float64) as money_collection, -- Tiền COD
+  IFNULL(CAST(o.deposit_amount AS float64),0) as deposit_amount,--Tiền cọc
+  IFNULL(CAST(o.money_collection AS float64),0) as money_collection, -- Tiền COD
   CASE 
-    WHEN CAST(o.deposit_amount AS float64)  > 0 and CAST(o.deposit_amount AS float64)  < CAST(o.money_collection AS float64) then 'Đã cọc 1 phần, chưa thanh toán hết'
-    WHEN CAST(o.deposit_amount AS float64)  = 0 and CAST(o.money_collection AS float64) <> 0 THEN 'COD'
+    WHEN IFNULL(CAST(o.deposit_amount AS float64),0)  > 0 and IFNULL(CAST(o.deposit_amount AS float64),0)  < IFNULL(CAST(o.money_collection AS float64),0) then 'Đã cọc 1 phần, chưa thanh toán hết'
+    WHEN IFNULL(CAST(o.deposit_amount AS float64),0)  = 0 and IFNULL(CAST(o.money_collection AS float64),0) <> 0 THEN 'COD'
     WHEN o.name like '%PS%' THEN 'Đơn đẩy từ Pushsale qua'
   ELSE 'Khác' End as payment_type,
   o.amount_total+cast(total_discount_amount as float64) - CAST(amount_tax as float64) as total_amount,
