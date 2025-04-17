@@ -44,9 +44,3 @@ models:
     t3:
       +materialized: table
       +on_schema_change: "sync_all_columns"
-    view_med:
-      +materialized: table
-      +on_schema_change: "sync_all_columns"
-    hr:
-      +materialized: table
-      +on_schema_change: "sync_all_columns"
