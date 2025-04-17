@@ -47,4 +47,4 @@ ol.price_subtotal + price_tax as final_amount,
  left join byebeo.res_users u on o.user_id = CAST(u.id as string)
  left join byebeo.crm_team t on o.team_id = cast(t.id as string)
  left join byebeo.res_users u1 on o.marketing_id = CAST(u1.id as string)
- where o.name = 'S00357'
+--  where o.name = 'S00357'
