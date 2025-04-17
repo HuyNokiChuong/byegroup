@@ -30,4 +30,4 @@ ol.price_subtotal,
  left join byebeo.byebeo_wards w on o.wards_id = CAST(w.id as string)
  left join byebeo.byebeo_branch b on o.branch_id = cast(b.id as string)
  left join byebeo.stock_warehouse sw on o.shipping_warehouse_id = cast(sw.id as string)
- where o.name = 'S00789'
+--  where o.name = 'S00789'
