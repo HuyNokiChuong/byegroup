@@ -45,4 +45,3 @@ ol.price_subtotal as net_amount, --Thành tiền, chưa bao gồm thuế
  left join byebeo.res_users u on o.user_id = CAST(u.id as string)
  left join byebeo.crm_team t on o.team_id = cast(t.id as string)
  left join byebeo.res_users u1 on o.marketing_id = CAST(u1.id as string)
---  where o.name = 'S00789'
