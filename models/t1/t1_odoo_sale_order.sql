@@ -17,7 +17,6 @@ SELECT
   o.shipping_provider,
   p.name as seller_employee_name,
   p1.name as marketing_employee_name,
-  bye_delivery_status,
   IFNULL(CAST(o.deposit_amount AS float64),0) as deposit_amount,--Tiền cọc
   IFNULL(CAST(o.money_collection AS float64),0) as money_collection, -- Tiền COD
   CASE 
