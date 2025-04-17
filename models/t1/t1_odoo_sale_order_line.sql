@@ -1,7 +1,7 @@
 SELECT 
-o.create_lead, ---Ngày tạo lead
-o.date_open_lead, ---Ngày giao lead
-o.date_order, ---Ngày đặt hàng
+  DATETIME_ADD(datetime(o.create_lead), INTERVAL 7 HOUR) AS create_lead,  -- Ngày tạo lead + 7h
+  DATETIME_ADD(datetime(o.date_open_lead), INTERVAL 7 HOUR) AS date_open_lead,  -- Ngày giao lead + 7h
+  DATETIME_ADD(datetime(o.date_order), INTERVAL 7 HOUR) AS date_order, -- Ngày đặt hàng + 7h
 ol.id,
 ol.order_id,
 o.name,
@@ -18,8 +18,8 @@ sw.name as warehouse_name, ---Kho vận chuyển
 o.transfer_code, ---Mã vận đơn
 o.note_for_customer,
 o.picking_policy, ---Chính sách vận chuyển
-o.effective_date, ---Ngày hiệu lực
-o.commitment_date, ---Ngày giao hàng dự kiến
+DATETIME_ADD(datetime(o.effective_date), INTERVAL 7 hour) as effective_date, ---Ngày hiệu lực
+DATETIME_ADD(datetime(o.commitment_date), INTERVAL 7 hour) as commitment_date, ---Ngày giao hàng dự kiến
 CASE o.delivery_status
   WHEN 'pending' then 'Chưa giao'
   WHEN 'starter' then 'Đã bắt đầu'
@@ -47,4 +47,4 @@ ol.price_subtotal + price_tax as final_amount,
  left join byebeo.res_users u on o.user_id = CAST(u.id as string)
  left join byebeo.crm_team t on o.team_id = cast(t.id as string)
  left join byebeo.res_users u1 on o.marketing_id = CAST(u1.id as string)
---  where o.name = 'S00357'
+ where o.name = 'S00357'
