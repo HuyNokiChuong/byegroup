@@ -13,11 +13,11 @@ SELECT
   o.shipping_provider,
   o.deposit_amount,--Tiền cọc
   o.money_collection, -- Tiền COD
-  o.amount_total+cast(total_discount_amount as float64) as total_amount,
+  o.amount_total+cast(total_discount_amount as float64) - CAST(amount_tax as float64) as total_amount,
   cast(o.total_discount_amount as float64) as discount_amount,
-  o.amount_total as net_amount,
-  o.discount_in_order,
-  o.amount_untaxed
+  o.amount_total - CAST(amount_tax as float64) as net_amount,
+  CAST(amount_tax as float64) as tax, --Thuế
+  o.amount_total+cast(total_discount_amount as float64) as final_amount
 FROM
   byebeo.sale_order o
    left join byebeo.res_country_state s on o.state_id = CAST(s.id as string)
@@ -28,4 +28,4 @@ FROM
  left join byebeo.res_users u on o.user_id = CAST(u.id as string)
  left join byebeo.crm_team t on o.team_id = cast(t.id as string)
  left join byebeo.res_users u1 on o.marketing_id = CAST(u1.id as string)
---  where o.name = 'S00789'
+--  where o.name = 'S00357'
