@@ -17,6 +17,10 @@ SELECT
   o.shipping_provider,
   o.deposit_amount,--Tiền cọc
   o.money_collection, -- Tiền COD
+  CASE 
+    WHEN deposit_amount > 0 and deposit_amount < money_collection then 'Đã cọc 1 phần, chưa thanh toán hết'
+    WHEN deposit_amount = 0 and money_collection <> 0 THEN 'COD'
+  ELSE 'Khác' End as payment_type,
   o.amount_total+cast(total_discount_amount as float64) - CAST(amount_tax as float64) as total_amount,
   cast(o.total_discount_amount as float64) as discount_amount,
   o.amount_total - CAST(amount_tax as float64) as net_amount,
