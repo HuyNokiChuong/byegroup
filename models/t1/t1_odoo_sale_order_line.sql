@@ -32,8 +32,9 @@ ol.qty_delivered, --số lượng đã giao
 ol.qty_invoiced, --số lượng xuất hóa đơn
 ol.price_unit, --đơn giá
 ol.is_discount_line,
-ol.discount_amount, --Giảm giá
-ol.price_subtotal, --Thành tiền, chưa bao gồm thuế
+ol.price_unit * ol.product_uom as total_amount,
+ol.discount_amount as discount_amount, --Giảm giá
+ol.price_subtotal as net_amount, --Thành tiền, chưa bao gồm thuế
  FROM byebeo.sale_order_line ol
  left join byebeo.sale_order o on ol.order_id = o.id
  left join byebeo.res_country_state s on o.state_id = CAST(s.id as string)
