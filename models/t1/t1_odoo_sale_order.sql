@@ -15,6 +15,8 @@ SELECT
   o.order_type,
   o.bye_delivery_status,
   o.shipping_provider,
+  p.name as seller_employee_name,
+  p1.name as marketing_employee_name,
   IFNULL(CAST(o.deposit_amount AS float64),0) as deposit_amount,--Tiền cọc
   IFNULL(CAST(o.money_collection AS float64),0) as money_collection, -- Tiền COD
   CASE 
@@ -38,6 +40,8 @@ FROM
  left join byebeo.byebeo_branch b on o.branch_id = cast(b.id as string)
  left join byebeo.stock_warehouse sw on o.shipping_warehouse_id = cast(sw.id as string)
  left join byebeo.res_users u on o.user_id = CAST(u.id as string)
+ left join byebeo.res_partner p on CAST(u.partner_id as string) = CAST(p.id as string)
  left join byebeo.crm_team t on o.team_id = cast(t.id as string)
  left join byebeo.res_users u1 on o.marketing_id = CAST(u1.id as string)
---  where o.name = 'S00357'
+ left join byebeo.res_partner p1 on CAST(u1.partner_id as string) = CAST(p1.id as string)
+--  where o.name = 'S00784'
