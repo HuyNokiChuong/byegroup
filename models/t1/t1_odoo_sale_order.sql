@@ -44,4 +44,5 @@ FROM
  left join byebeo.crm_team t on o.team_id = cast(t.id as string)
  left join byebeo.res_users u1 on o.marketing_id = CAST(u1.id as string)
  left join byebeo.res_partner p1 on CAST(u1.partner_id as string) = CAST(p1.id as string)
- where o.name = 'S00784'
+--  where o.name = 'S00784'
+
