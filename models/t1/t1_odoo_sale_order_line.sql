@@ -29,7 +29,7 @@ CASE o.delivery_status
 END as delivery_status,
 IFNULL(p1.name, 'Không thấy tên người chạy') as marketing_employee_name,
 IFNULL(lc.name, 'Nguồn khác') as source_name_category,
-us.name as source_name,
+IFNULL(us.name, 'Organic') as source_name,
 ol.name as product_name, ---tên saaaản phẩm
 ol.product_uom, --Số lượng
 ol.qty_delivered, --số lượng đã giao

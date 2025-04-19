@@ -19,7 +19,7 @@ SELECT
   p.name as seller_employee_name,
   IFNULL(p1.name, 'Không thấy tên người chạy') as marketing_employee_name,
   IFNULL(lc.name, 'Nguồn khác') as source_name_category,
-  us.name as source_name,
+  IFNULL(us.name, 'Organic') as source_name,
   IFNULL(CAST(o.deposit_amount AS float64),0) as deposit_amount,--Tiền cọc
   IFNULL(CAST(o.money_collection AS float64),0) as money_collection, -- Tiền COD
   CASE 
