@@ -6,6 +6,7 @@ ol.id,
 ol.order_id,
 o.name,
 o.order_type,
+o.state,
 o.receiver_name, ---Tên người nhận
 o.receiver_phone, ---Số điện thoại người nhận
 s.name as city,
