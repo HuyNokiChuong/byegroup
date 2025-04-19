@@ -32,7 +32,7 @@ IFNULL(p1.name, 'Không thấy tên người chạy') as marketing_employee_name
 IFNULL(lc.name, 'Nguồn khác') as source_name_category,
 IFNULL(us.name, 'Organic') as source_name,
 ol.name as product_name, ---tên saaaản phẩm
-ol.product_uom, --Số lượng
+ol.product_uom_qty, --Số lượng
 ol.qty_delivered, --số lượng đã giao
 ol.qty_invoiced, --số lượng xuất hóa đơn
 ol.price_unit, --đơn giá
