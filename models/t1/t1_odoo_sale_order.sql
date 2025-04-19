@@ -17,6 +17,7 @@ SELECT
   o.shipping_provider,
   p.name as seller_employee_name,
   p1.name as marketing_employee_name,
+  lc.name as source_name_category,
   us.name as source_name,
   IFNULL(CAST(o.deposit_amount AS float64),0) as deposit_amount,--Tiền cọc
   IFNULL(CAST(o.money_collection AS float64),0) as money_collection, -- Tiền COD
@@ -46,6 +47,7 @@ FROM
  left join byebeo.res_users u1 on o.marketing_id = CAST(u1.id as string)
  left join byebeo.res_partner p1 on CAST(u1.partner_id as string) = CAST(p1.id as string)
  left join byebeo.utm_source us on o.source_id = CAST(us.id as string) and o.company_id = us.company_id
+ left join byebeo.crm_lead_channel lc on us.channel_id = lc.id
 --  where o.name = 'S00784'
 
 
