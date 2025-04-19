@@ -26,6 +26,7 @@ CASE o.delivery_status
   WHEN 'partial' then 'Đã giao 1 phần'
   WHEN 'full' then 'Đã giao hết'
 END as delivery_status,
+us.name as source_name,
 ol.name as product_name, ---tên saaaản phẩm
 ol.product_uom, --Số lượng
 ol.qty_delivered, --số lượng đã giao
@@ -47,4 +48,5 @@ ol.price_subtotal + price_tax as final_amount,
  left join byebeo.res_users u on o.user_id = CAST(u.id as string)
  left join byebeo.crm_team t on o.team_id = cast(t.id as string)
  left join byebeo.res_users u1 on o.marketing_id = CAST(u1.id as string)
+ left join byebeo.utm_source us on o.source_id = CAST(us.id as string) and o.company_id = us.company_id
 --  where o.name = 'S00357'
