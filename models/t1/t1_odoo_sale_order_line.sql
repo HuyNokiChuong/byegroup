@@ -13,6 +13,7 @@ st.name as district,
 w.name as ward,
 o.address,
 o.shipping_provider, ---Đơn vị vận chuyển
+o.delivery_date,
 b.name as branch_name, ---Chi nhánh gửi
 sw.name as warehouse_name, ---Kho vận chuyển
 o.transfer_code, ---Mã vận đơn
@@ -46,7 +47,7 @@ ol.price_subtotal + price_tax as final_amount,
  left join byebeo.byebeo_wards w on o.wards_id = CAST(w.id as string)
  left join byebeo.byebeo_branch b on o.branch_id = cast(b.id as string)
  left join byebeo.stock_warehouse sw on o.shipping_warehouse_id = cast(sw.id as string)
- left join byebeo.res_users u on o.user_id = CAST(u.id as string)
+ left join byebeo.res_users u on o.user_id = u.id 
  left join byebeo.crm_team t on o.team_id = cast(t.id as string)
  left join byebeo.res_users u1 on o.marketing_id = CAST(u1.id as string)
  left join byebeo.utm_source us on o.source_id = CAST(us.id as string) and o.company_id = us.company_id
