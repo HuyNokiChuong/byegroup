@@ -20,6 +20,7 @@ sw.name as warehouse_name, ---Kho vận chuyển
 o.transfer_code, ---Mã vận đơn
 o.note_for_customer,
 o.picking_policy, ---Chính sách vận chuyển
+rc.name as company_name,
 DATETIME_ADD(datetime(o.effective_date), INTERVAL 7 hour) as effective_date, ---Ngày hiệu lực
 DATETIME_ADD(datetime(o.commitment_date), INTERVAL 7 hour) as commitment_date, ---Ngày giao hàng dự kiến
 CASE o.delivery_status
@@ -55,4 +56,5 @@ ol.price_subtotal + price_tax as final_amount,
  left join byebeo.res_partner p1 on CAST(u1.partner_id as string) = CAST(p1.id as string)
  left join byebeo.utm_source us on o.source_id = CAST(us.id as string) and o.company_id = us.company_id
  left join byebeo.crm_lead_channel lc on us.channel_id = lc.id
+ left join byebeo.res_company rc on o.company_id = rc.id
 --  where o.name = 'S00357'

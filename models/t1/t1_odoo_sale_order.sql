@@ -16,6 +16,7 @@ SELECT
   o.bye_delivery_status,
   o.shipping_provider,
   o.delivery_date,
+  rc.name as company_name,
   p.name as seller_employee_name,
 IFNULL(p1.name, 'Không thấy tên người chạy') as marketing_employee_name,
 IFNULL(lc.name, 'Nguồn khác') as source_name_category,
@@ -49,6 +50,6 @@ FROM
  left join byebeo.res_partner p1 on CAST(u1.partner_id as string) = CAST(p1.id as string)
  left join byebeo.utm_source us on o.source_id = CAST(us.id as string) and o.company_id = us.company_id
  left join byebeo.crm_lead_channel lc on us.channel_id = lc.id
+ left join byebeo.res_company rc on o.company_id = rc.id
 --  where o.name = 'S00784'
-
 
