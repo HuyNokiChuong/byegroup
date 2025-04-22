@@ -1,6 +1,6 @@
 with phone as(
   
-SELECT distinct(phone) phone, name, city from byebeo.res_partner where length(phone) > 1 
+SELECT distinct(phone) phone, name, state_id from byebeo.res_partner where length(phone) > 1 
 -- and phone = '0945137555'
 ),
 p_sale as(
@@ -26,7 +26,8 @@ latest_time as (
   date_order
   FROM {{ref('t1_odoo_sale_order_line')}}
 )
-SELECT p.*,
+SELECT p.* except(state_id),
+    cs.name as city,
     ft.date_order as first_order_date,
     lt.date_order as latest_order_date,
     date_diff(current_date(),date(lt.date_order),day) as last_order_in_day,
@@ -105,6 +106,4 @@ SELECT p.*,
     left join p_sale s on s.phone = p.phone
     left join latest_time lt on lt.phone = p.phone and lt.ro = 1
     left join first_time ft on ft.phone = p.phone and ft.ro = 1
-
-
-
+    left join byebeo.res_country_state cs on p.state_id = CAST(cs.id as string)
