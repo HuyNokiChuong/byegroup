@@ -106,4 +106,4 @@ SELECT p.* except(state_id),
     left join p_sale s on s.phone = p.phone
     left join latest_time lt on lt.phone = p.phone and lt.ro = 1
     left join first_time ft on ft.phone = p.phone and ft.ro = 1
-    left join byebeo.res_country_state cs on p.state_id = CAST(cs.id as string)
+    left join byebeo.res_country_state cs on CAST(p.state_id as string) = CAST(cs.id as string)
