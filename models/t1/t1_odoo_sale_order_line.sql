@@ -59,6 +59,6 @@ pt.list_price
  left join byebeo.crm_lead_channel lc on us.channel_id = lc.id
  left join byebeo.res_company rc on o.company_id = rc.id
  left JOIN byebeo.product_product pp ON ol.product_id = pp.id
- left JOIN byebeo.product_template pt ON pp.product_tmpl_id = pt.id;
+ left JOIN byebeo.product_template pt ON pp.product_tmpl_id = pt.id
 
 --  where o.name = 'S00357'
