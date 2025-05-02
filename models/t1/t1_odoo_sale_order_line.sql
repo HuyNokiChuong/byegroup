@@ -43,7 +43,8 @@ ol.discount_amount as discount_amount, --Giảm giá
 ol.price_subtotal as net_amount, --Thành tiền, chưa bao gồm thuế
 ol.price_tax as tax, ---- Thuế
 ol.price_subtotal + price_tax as final_amount,
-pt.list_price
+pt.list_price as cogs,
+ol.price_subtotal-pt.list_price as gross_margin
  FROM byebeo.sale_order_line ol
  left join byebeo.sale_order o on ol.order_id = o.id
  left join byebeo.res_country_state s on o.state_id = CAST(s.id as string)
