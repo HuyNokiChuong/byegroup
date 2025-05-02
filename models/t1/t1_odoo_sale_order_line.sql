@@ -43,6 +43,7 @@ ol.discount_amount as discount_amount, --Giảm giá
 ol.price_subtotal as net_amount, --Thành tiền, chưa bao gồm thuế
 ol.price_tax as tax, ---- Thuế
 ol.price_subtotal + price_tax as final_amount,
+pt.list_price
  FROM byebeo.sale_order_line ol
  left join byebeo.sale_order o on ol.order_id = o.id
  left join byebeo.res_country_state s on o.state_id = CAST(s.id as string)
@@ -57,4 +58,7 @@ ol.price_subtotal + price_tax as final_amount,
  left join byebeo.utm_source us on o.source_id = CAST(us.id as string) and o.company_id = us.company_id
  left join byebeo.crm_lead_channel lc on us.channel_id = lc.id
  left join byebeo.res_company rc on o.company_id = rc.id
+ left JOIN byebeo.product_product pp ON ol.product_id = pp.id
+ left JOIN byebeo.product_template pt ON pp.product_tmpl_id = pt.id;
+
 --  where o.name = 'S00357'
