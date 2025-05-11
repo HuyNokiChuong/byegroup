@@ -47,16 +47,16 @@ pt.list_price as cogs,
 ol.price_subtotal-pt.list_price as gross_margin
  FROM byebeo.sale_order_line ol
  left join byebeo.sale_order o on ol.order_id = o.id
- left join byebeo.res_country_state s on o.state_id = CAST(s.id as string)
- LEFT JOIN byebeo.byebeo_district st on o.district_id = cast(st.id as string)
- left join byebeo.byebeo_wards w on o.wards_id = CAST(w.id as string)
- left join byebeo.byebeo_branch b on o.branch_id = cast(b.id as string)
- left join byebeo.stock_warehouse sw on o.shipping_warehouse_id = cast(sw.id as string)
- left join byebeo.res_users u on o.user_id = cast(u.id as string) 
- left join byebeo.crm_team t on o.team_id = cast(t.id as string)
- left join byebeo.res_users u1 on o.marketing_id = CAST(u1.id as string)
+ left join byebeo.res_country_state s on CAST(o.state_id as string) = CAST(s.id as string)
+ LEFT JOIN byebeo.byebeo_district st on CAST(o.district_id as string) = cast(st.id as string)
+ left join byebeo.byebeo_wards w on CAST(o.wards_id as string) = CAST(w.id as string)
+ left join byebeo.byebeo_branch b on CAST(o.branch_id as string) = cast(b.id as string)
+ left join byebeo.stock_warehouse sw on CAST(o.shipping_warehouse_id as string) = cast(sw.id as string)
+ left join byebeo.res_users u on CAST(o.user_id as string) = cast(u.id as string) 
+ left join byebeo.crm_team t on CAST(o.team_id as string) = cast(t.id as string)
+ left join byebeo.res_users u1 on CAST(o.marketing_id as string) = CAST(u1.id as string)
  left join byebeo.res_partner p1 on CAST(u1.partner_id as string) = CAST(p1.id as string)
- left join byebeo.utm_source us on o.source_id = CAST(us.id as string) and o.company_id = us.company_id
+ left join byebeo.utm_source us on CAST(o.source_id as string) = CAST(us.id as string) and o.company_id = us.company_id
  left join byebeo.crm_lead_channel lc on us.channel_id = lc.id
  left join byebeo.res_company rc on o.company_id = rc.id
  left JOIN byebeo.product_product pp ON ol.product_id = pp.id
