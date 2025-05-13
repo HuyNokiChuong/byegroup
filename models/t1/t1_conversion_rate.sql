@@ -36,4 +36,4 @@ WHERE irm.model = 'sale.order'
   AND imf.name = 'status_transfer'
   AND mm.model = 'sale.order'
   AND mtv.old_value_char IS DISTINCT FROM mtv.new_value_char
-ORDER BY sale_order_id NULLS FIRST, change_date;
+ORDER BY sale_order_id NULLS FIRST, change_date
