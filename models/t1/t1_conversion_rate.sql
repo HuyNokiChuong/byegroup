@@ -39,4 +39,4 @@ WHERE irm.model = 'sale.order'
   AND mtv.old_value_char IS DISTINCT FROM mtv.new_value_char
 ORDER BY sale_order_id NULLS FIRST, change_date
 )
-SELECT * FROM cte where lead_id is not null
+SELECT * FROM cte where lead_id is not null order by lead_id, change_date
