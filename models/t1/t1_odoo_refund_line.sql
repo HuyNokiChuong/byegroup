@@ -19,4 +19,4 @@ WHERE irm.model = 'sale.order'
   AND mm.model = 'sale.order'
   AND mtv.old_value_char IS DISTINCT FROM mtv.new_value_char
 	AND mtv.new_value_char = 'Hoàn'
-ORDER BY sale_order_id NULLS FIRST, change_date
+ORDER BY sale_order_id NULLS FIRST,lead_id, change_date
