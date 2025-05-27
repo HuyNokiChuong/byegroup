@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'byegroup_dbt'
+name: 'one_dbt'
 version: '1.0.0'
 config-version: 2
 
@@ -33,7 +33,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  byegroup_dbt:
+  one_dbt:
     # Applies to all files under models/example/
     t1:
       +materialized: table
@@ -42,5 +42,8 @@ models:
       +materialized: table
       +on_schema_change: "sync_all_columns"
     t3:
+      +materialized: table
+      +on_schema_change: "sync_all_columns"
+    t4:
       +materialized: table
       +on_schema_change: "sync_all_columns"
