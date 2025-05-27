@@ -8,7 +8,7 @@ config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
 # profile: 'Analytics'
-profile: 'Analytics'
+profile: 'byegroup'
 
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
@@ -33,7 +33,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  med247_dbt:
+  byegroup:
     # Applies to all files under models/example/
     t1:
       +materialized: table
@@ -47,6 +47,6 @@ models:
     view_med:
       +materialized: table
       +on_schema_change: "sync_all_columns"
-    hr:
+    HR:
       +materialized: table
       +on_schema_change: "sync_all_columns"
