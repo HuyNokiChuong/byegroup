@@ -44,6 +44,3 @@ models:
     t3:
       +materialized: table
       +on_schema_change: "sync_all_columns"
-    t4:
-      +materialized: table
-      +on_schema_change: "sync_all_columns"
