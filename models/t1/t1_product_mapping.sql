@@ -1,0 +1,1 @@
+SELECT * FROM ggsheet.product_mapping
