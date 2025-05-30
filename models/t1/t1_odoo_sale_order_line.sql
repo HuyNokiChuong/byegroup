@@ -64,6 +64,6 @@ ol.price_subtotal-pt.list_price as gross_margin
  left join byebeo.res_company rc on o.company_id = rc.id
  left JOIN byebeo.product_product pp ON ol.product_id = pp.id
  left JOIN byebeo.product_template pt ON pp.product_tmpl_id = pt.id
- left join {{ ref('t1_product_mapping')}} pm on ol.name = pm.Original_Name
+ left join {{ ref('t1_product_mapping')}} pm on lower(trim(ol.name)) = lower(trim(pm.Original_Name))
 
 --  where o.name = 'S00357'
