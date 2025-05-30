@@ -33,6 +33,9 @@ IFNULL(p1.name, 'Không thấy tên người chạy') as marketing_employee_name
 IFNULL(lc.name, 'Nguồn khác') as source_name_category,
 IFNULL(us.name, 'Organic') as source_name,
 ol.name as product_name, ---tên saaaản phẩm
+pm.General_Name as product_name_1,
+pm.Standardized_Name as product_name_2,
+pm.Variants as product_variant,
 ol.product_uom_qty, --Số lượng
 ol.qty_delivered, --số lượng đã giao
 ol.qty_invoiced, --số lượng xuất hóa đơn
@@ -61,5 +64,6 @@ ol.price_subtotal-pt.list_price as gross_margin
  left join byebeo.res_company rc on o.company_id = rc.id
  left JOIN byebeo.product_product pp ON ol.product_id = pp.id
  left JOIN byebeo.product_template pt ON pp.product_tmpl_id = pt.id
+ left join {{ ref('t1_product_mapping')}} pm on ol.name = pm.Original_Name
 
 --  where o.name = 'S00357'
