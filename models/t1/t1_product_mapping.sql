@@ -1,1 +1,1 @@
-SELECT * FROM ggsheet.product_mapping
+SELECT * FROM `byegroup.ggsheet.product_mapping`
